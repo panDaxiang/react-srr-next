@@ -52,3 +52,23 @@ scripts": {
 }
 
 ```
+
+### 集成 sass
+
+next 中默认不支持直接 import scss 文件，它默认为我们提供了一种 css in js 的方案，所以我们要自己加入 next 的插件包进行 scss 支持
+
+```
+yarn add @zeit/next-sass node-sass -D
+```
+
+如果项目根目录下没有的话
+我们新建一个 next.config.js
+然后加入如下代码
+
+```
+const withCss = require('@zeit/next-sass')
+
+// withCss得到的是一个next的config配置
+module.exports = withSass({})
+
+```
