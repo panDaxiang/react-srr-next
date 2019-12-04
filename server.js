@@ -4,14 +4,14 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
-const handler = app.getRequestHandler()
+const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   const server = new Koa()
   // const router = new Router()
 
   server.use(async (ctx, next) => {
-    await handler(ctx.req, ctx.res)
+    await handle(ctx.req, ctx.res)
     ctx.respond = false
   })
 
