@@ -72,3 +72,40 @@ const withCss = require('@zeit/next-sass')
 module.exports = withSass({})
 
 ```
+
+# 集成 ant-design
+
+```
+yarn add antd
+yarn add babel-plugin-import // 按需加载插件
+```
+
+在根目录下新建.babelrc 文件
+
+```
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd"
+      }
+    ]
+  ]
+}
+
+```
+
+在 pages 文件夹下新建\_app.js，这是 next 提供的让你重写 App 组件的方式，在这里我们可以引入 antd 的样式
+
+```
+// pages/_app.js
+
+import App from 'next/app'
+
+import 'antd/dist/antd.css'
+
+export default App
+
+```
